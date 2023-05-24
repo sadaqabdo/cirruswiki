@@ -126,7 +126,7 @@ class CirrusPreprocess:
                     except Exception as e:
                         raise (f"Error while writing to {export_pathfile}: {e}")
 
-                if len(doc_tracker) % 1_000_000 == 0:
+                if doc_tracker % 1_000_000 == 0:
                     print(f"Tokenized {doc_tracker} articles")
 
         print(
