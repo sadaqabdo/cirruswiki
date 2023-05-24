@@ -35,22 +35,22 @@ Here are a couple of examples demonstrating how to use Cirruswiki effectively:
 1. Downloading a specific Cirrus dump (e.g., German Wikipedia dump from 2023-05-15), processing it, and indexing it in the Elasticsearch index `dewiki`:
 
 ```bash
-python cirrus_extractor.py 
-        --link https://dumps.wikimedia.org/other/cirrussearch/current/dewiki-20230515-cirrussearch-content.json.gz
-        --process 
-        --index dewiki 
-        --output output
+python cirrus_extractor.py \
+        --link https://dumps.wikimedia.org/other/cirrussearch/current/dewiki-20230515-cirrussearch-content.json.gz \
+        --process \
+        --index dewiki \
+        --output output \
         --verbose
 ```
 
 2. Downloading the latest Cirrus dump (e.g., French Wikipedia dump), processing it, and indexing it in the Elasticsearch index `frwiki` (with debugging enabled):
 
 ```bash
-python cirrus_extractor.py 
-        --lang fr 
-        --latest 
-        --process
-        --index frwiki 
-        --output output 
+python cirrus_extractor.py \
+        --lang fr \
+        --latest \
+        --process \
+        --index frwiki \
+        --output output \
         --debug
 ```
