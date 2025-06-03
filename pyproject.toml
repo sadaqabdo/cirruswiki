@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cirruswiki"
+version = "0.1.0"
+description = "Tools for processing CirrusSearch Wikipedia dumps"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "beautifulsoup4==4.12.2",
+    "elasticsearch==7.17.9",
+    "requests==2.30.0",
+    "tqdm==4.65.0",
+    "transformers==4.27.4",
+]
+
+[project.scripts]
+cirruswiki = "cirruswiki.cli:main"

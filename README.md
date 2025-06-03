@@ -1,14 +1,21 @@
 # Cirruswiki: Efficiently Handling CirrusSearch Wikipedia Dumps
 
-Cirruswiki (CirrusSearch Wikipedia Processor)  Python script designed to efficiently handle CirrusSearch Wikipedia dumps. 
+Cirruswiki (CirrusSearch Wikipedia Processor)  is a Python library designed to efficiently handle CirrusSearch Wikipedia dumps.
 
 It is used to download, extract data from the dumps, process it with both a cleaner which is heavily inspired from the [WikiExtractor](https://github.com/attardi/wikiextractor) and a tokenizer, and finally index them with [Elasticsearch](https://www.elastic.co/products/elasticsearch).
 
 
 ## Usage
 
+Install the package in your environment and invoke the command line interface:
+
 ```bash
-usage: python cirrus_extractor.py [-h] [--link LINK] [--lang LANG]
+pip install -e .
+python -m cirruswiki --help
+```
+
+```bash
+usage: python -m cirruswiki [-h] [--link LINK] [--lang LANG]
                            [--latest | --no-latest] [--process | --no-process]
                            [--output OUTPUT] [--index INDEX]
                            [--debug | --no-debug] [--verbose | --no-verbose]
@@ -35,7 +42,7 @@ Here are a couple of examples demonstrating how to use Cirruswiki effectively:
 1. Downloading a specific Cirrus dump (e.g., German Wikipedia dump from 2023-05-15), processing it, and indexing it in the Elasticsearch index `dewiki`:
 
 ```bash
-python cirrus_extractor.py \
+python -m cirruswiki \
         --link https://dumps.wikimedia.org/other/cirrussearch/current/dewiki-20230515-cirrussearch-content.json.gz \
         --process \
         --index dewiki \
@@ -46,7 +53,7 @@ python cirrus_extractor.py \
 2. Downloading the latest Cirrus dump (e.g., French Wikipedia dump), processing it, and indexing it in the Elasticsearch index `frwiki` (with debugging enabled):
 
 ```bash
-python cirrus_extractor.py \
+python -m cirruswiki \
         --lang fr \
         --latest \
         --process \
