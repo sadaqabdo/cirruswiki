@@ -3,7 +3,7 @@ import json
 from tqdm.auto import tqdm
 from transformers import AutoTokenizer
 
-from cirrus_clean import clean, normalize_title
+from .clean import clean, normalize_title
 
 
 class CirrusPreprocess:

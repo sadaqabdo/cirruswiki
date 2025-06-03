@@ -1,12 +1,17 @@
+"""Command line interface for the cirruswiki package."""
+
 import argparse
 import logging
 import os
 
-from cirrus_download import CirrusDownloader
-from cirrus_indexer import CirrusElasticsearchIndexer
-from cirrus_preprocess import CirrusPreprocess
+from .download import CirrusDownloader
+from .indexer import CirrusElasticsearchIndexer
+from .preprocess import CirrusPreprocess
 
-if __name__ == "__main__":
+
+def main(argv=None):
+    """Entry point for the cirruswiki CLI."""
+
     argparser = argparse.ArgumentParser(description="Download Wikipedia dump")
 
     argparser.add_argument("--link", help="Download link")
@@ -29,7 +34,7 @@ if __name__ == "__main__":
     argparser.add_argument(
         "--verbose", action=argparse.BooleanOptionalAction, help="Verbose output"
     )
-    args = argparser.parse_args()
+    args = argparser.parse_args(argv)
 
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)
@@ -73,3 +78,7 @@ if __name__ == "__main__":
     if args.index:
         indexer = CirrusElasticsearchIndexer(index_name=args.index)
         indexer.index_file(extractedfile_path)
+
+
+if __name__ == "__main__":  # pragma: no cover - CLI entry point
+    main()
